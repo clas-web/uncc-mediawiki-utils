@@ -209,7 +209,7 @@ echo "done.\n";
 //----------------------------------------------------------------------------------------
 echo "Copying MediaWiki files...";
 
-exec( "rsync --quiet --delete --recursive --force --exclude=.source.master '$master_path/' '$site_path'" );
+exec( "rsync --quiet --delete --recursive --force --exclude=.source.master --exclude=LocalSettings.php '$master_path/' '$site_path'" );
 
 echo "done.\n";
 
