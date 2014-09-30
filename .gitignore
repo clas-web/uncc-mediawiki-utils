@@ -1,0 +1,7 @@
+# Mac hidden file
+.DS_Store
+
+# files with passwords
+source/admin.php
+source/mediawiki.php
+
