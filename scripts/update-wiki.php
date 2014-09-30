@@ -166,10 +166,8 @@ echo "\n";
 //----------------------------------------------------------------------------------------
 // Sync each wiki's source code and run the maintenance update script.
 //----------------------------------------------------------------------------------------
-foreach( $wikis_to_update as $wiki_name )
+foreach( $wikis_to_update as $wiki_name => $wiki_path )
 {
-	$wiki_path = $all_wikis[$wiki_name];
-
 	if( !$skip_sync )
 	{
 		echo "Updating wiki '$wiki_name' source...";
@@ -180,8 +178,9 @@ foreach( $wikis_to_update as $wiki_name )
 	if( !$skip_script )
 	{
 		echo "Running wiki '$wiki_name' update script...";
-		exec( "php $wiki_path/maintenance/update.php --quick '--dbuser=$dbName' '--dbpass=$dbPassword' '--conf=$wiki_path/LocalSettings.php'" );
+		exec( "php $wiki_path/maintenance/update.php --quick '--dbuser=$dbUser' '--dbpass=$dbPassword' '--conf=$wiki_path/LocalSettings.php'" );
 		echo "done.\n";
 	}
 }
+
 

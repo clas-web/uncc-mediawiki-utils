@@ -84,9 +84,6 @@ $table_prefix = strtolower(generate_random_string(5)).'_';
 //----------------------------------------------------------------------------------------
 // Verify with the user.
 //----------------------------------------------------------------------------------------
-echo "Name: $wiki_name\n";
-echo "Title: $wiki_title\n";
-echo "\n";
 echo "Installing '$wiki_title' into folder '$site_path'.\n";
 echo "\n";
 echo 'Do you want to continue (yes)?';
@@ -112,7 +109,6 @@ if( @is_dir($site_path) )
 {
 	echo "error.\n";
 	echo "Site folder already exists.\n";
-	echo "   $site_path\n";
 	echo "\n";
 	exit;
 }
@@ -121,7 +117,6 @@ if( !@mkdir($site_path) )
 {
 	echo "error.\n";
 	echo "Unable to create site folder.\n";
-	echo "   $site_path\n";
 	echo "\n";
 	exit;
 }
@@ -135,7 +130,6 @@ echo "done.\n";
 echo "Create database tables...";
 
 $tables_sql = @file_get_contents( "$master_path/maintenance/tables.sql" );
-
 if( $tables_sql === false )
 {
 	echo "error.\n";
@@ -147,7 +141,7 @@ if( $tables_sql === false )
 
 $tables_sql = str_replace( "/*_*/", $table_prefix, $tables_sql );
 
-if( @file_put_contents( "$utils_path/temp/$folder_name.sql", $tables_sql ) === false )
+if( @file_put_contents( "$utils_path/temp/$wiki_name.sql", $tables_sql ) === false )
 {
 	echo "error.\n";
 	echo "Unable to write tables.sql file.\n";
@@ -172,6 +166,8 @@ if( !@mysqli_multi_query($db_connection, $tables_sql) )
 	echo "\n";
 	exit;
 }
+
+mysqli_close( $db_connection );
 
 echo "done.\n";
 
@@ -232,6 +228,4 @@ exec( "php $site_path/maintenance/update.php --quick '--dbuser=$dbUser' '--dbpas
 
 echo "done.\n";
 
-
-/** END MAIN SCRIPT **/
 

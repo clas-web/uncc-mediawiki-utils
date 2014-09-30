@@ -183,6 +183,8 @@ foreach( $wikis_to_delete as $wiki_name )
 	}
 	
 	// delete tables...
+
+	mysqli_close( $db_connection );
 		
 	remove_directory( $wiki_path );
 	
