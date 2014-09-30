@@ -27,6 +27,7 @@ function display_help()
 // Get functions and admin configuration settings.
 //----------------------------------------------------------------------------------------
 require_once( dirname(__DIR__).'/scripts/functions.php' );
+check_required_files();
 require_once( dirname(__DIR__).'/config/admin.php' );
 
 

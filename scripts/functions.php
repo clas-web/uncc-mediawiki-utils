@@ -4,8 +4,41 @@
 
 /**
  * 
- * @param  $args  array  
- * @return        array  
+ */
+function check_required_files()
+{
+	$errors = false;
+	$admin_file = dirname(__DIR__).'/config/admin.php';
+	$mediawiki_file = dirname(__DIR__).'/config/mediawiki.php';
+	
+	if( !file_exists($admin_file) )
+	{
+		echo "ERROR: Unable to find admin config file: '$admin_file'\n";
+		echo "Create file by duplicating admin.default.php.\n";
+		echo "\n";
+		$errors = true;
+	}
+	
+	if( !file_exists($mediawiki_file) )
+	{
+		echo "ERROR: Unable to find mediawiki config file: '$mediawiki_file'\n";
+		echo "Create file by duplicating mediawiki.default.php.\n";
+		echo "\n";
+		$errors = true;
+	}
+	
+	if( $errors ) exit;
+}
+
+
+
+/**
+ * 
+ * @param  $args			array	
+ *         
+ * @param  $valid_keys		array	
+ * @param  $valid_switches	array	
+ * @return 					array	
  */
 function process_args( $args, $valid_keys, $valid_switches )
 {
