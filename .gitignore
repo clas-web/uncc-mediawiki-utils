@@ -2,6 +2,6 @@
 .DS_Store
 
 # files with passwords
-source/admin.php
-source/mediawiki.php
+config/admin.php
+config/mediawiki.php
 
