@@ -46,7 +46,7 @@ foreach( $args as $arg )
 	switch( $arg['key'] )
 	{
 		case 'wiki':
-			$wikis_to_update[] = $arg['value'];
+			$wikis_to_delete[] = $arg['value'];
 			break;
 		case 'all':
 			$update_all = true;
