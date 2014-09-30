@@ -14,7 +14,7 @@ function display_help()
 	echo "\n";
 	echo " --wiki:WIKI\n";
 	echo "      Delete specified wiki.\n";
-	echo "      May be included multiple times with differnet wikis.\n";
+	echo "      May be included multiple times with different wikis.\n";
 	echo "\n";
 	exit;
 }
@@ -49,7 +49,7 @@ foreach( $args as $arg )
 			$wikis_to_delete[] = $arg['value'];
 			break;
 		case 'all':
-			$update_all = true;
+			$delete_all = true;
 			break;
 		case 'help':
 			$show_help = true;

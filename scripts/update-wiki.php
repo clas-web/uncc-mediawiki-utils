@@ -14,7 +14,7 @@ function display_help()
 	echo "\n";
 	echo " --wiki:WIKI\n";
 	echo "      Update specified wiki.\n";
-	echo "      May be included multiple times with differnet wikis.\n";
+	echo "      May be included multiple times with different wikis.\n";
 	echo "\n";
 	echo " --skipsync\n";
 	echo "      Skips syncing the source code and just runs the\n";
