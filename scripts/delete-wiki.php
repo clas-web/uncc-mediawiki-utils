@@ -170,7 +170,7 @@ foreach( $wikis_to_delete as $wiki_name )
 	}
 	
 	$matches = array();
-	if( preg_match( "/\$wgDBprefix = \"\[([^\"]+)\"/", $arg, $matches ) )
+	if( preg_match( "/\$wgDBprefix = \"\[([^\"]+)\"/", $local_settings, $matches ) )
 	{
 		$db_prefix = $matches[1];
 	}
