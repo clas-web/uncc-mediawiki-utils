@@ -222,7 +222,7 @@ echo "Creating admin account...";
 
 putenv("DISABLE_LDAP=1");
 exec( "php $site_path/maintenance/createAndPromote.php --quick --force --bureaucrat --sysop '--conf=$site_path/LocalSettings.php' '$wikiUsername' '$wikiPassword'" );
-putenv("DISABLE_LDAP=0")
+putenv("DISABLE_LDAP=0");
 
 echo "done.\n";
 
