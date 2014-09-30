@@ -13,7 +13,8 @@ function check_required_files()
 	
 	if( !file_exists($admin_file) )
 	{
-		echo "ERROR: Unable to find admin config file: '$admin_file'\n";
+		echo "ERROR: Unable to find admin config file.\n";
+		echo "   $admin_file\n";
 		echo "Create file by duplicating admin.default.php.\n";
 		echo "\n";
 		$errors = true;
@@ -21,7 +22,8 @@ function check_required_files()
 	
 	if( !file_exists($mediawiki_file) )
 	{
-		echo "ERROR: Unable to find mediawiki config file: '$mediawiki_file'\n";
+		echo "ERROR: Unable to find mediawiki config file.\n";
+		echo "   $mediawiki_file\n";
 		echo "Create file by duplicating mediawiki.default.php.\n";
 		echo "\n";
 		$errors = true;

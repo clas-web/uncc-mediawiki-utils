@@ -157,7 +157,8 @@ foreach( $repos_to_init as $repo_name )
 	if( is_dir($folder) )
 	{
 		echo "error.\n";
-		echo "Unable to delete folder: '$folder'\n";
+		echo "Unable to delete folder.\n";
+		echo "   $folder\n";
 		echo "\n";
 		exit;
 	}
@@ -165,7 +166,8 @@ foreach( $repos_to_init as $repo_name )
 	if( !@mkdir($folder) )
 	{
 		echo "error.\n";
-		echo "Unable to create repo folder: '$folder'\n";
+		echo "Unable to create repo folder.\n";
+		echo "   $folder\n";
 		echo "\n";
 		exit;
 	}
@@ -187,7 +189,8 @@ remove_directory( $master_path );
 if( is_dir($master_path) )
 {
 	echo "error.\n";
-	echo "Unable to delete folder: '$master_path'\n";
+	echo "Unable to delete folder.\n";
+	echo "   $master_path\n";
 	echo "\n";
 	exit;
 }
@@ -195,7 +198,8 @@ if( is_dir($master_path) )
 if( !@mkdir($master_path) )
 {
 	echo "error.\n";
-	echo "Unable to create master folder: '$master_path'\n";
+	echo "Unable to create master folder.\n";
+	echo "   $master_path\n";
 	echo "\n";
 	exit;
 }
@@ -219,7 +223,8 @@ foreach( $all_repos as $repo_name )
 	if( !is_dir($folder) )
 	{
 		echo "error.\n";
-		echo "Unable to find folder: '$folder'\n";
+		echo "Unable to find folder.\n";
+		echo "   $folder\n";
 		echo "Try re-running script with --wiki:$repo_name argument.\n";
 		echo "\n";
 		exit;
@@ -230,7 +235,8 @@ foreach( $all_repos as $repo_name )
 		if( !mkdir($location) || !is_dir($location) )
 		{
 			echo "error.\n";
-			echo "Unable to create location folder: '$location'\n";
+			echo "Unable to create location folder.\n";
+			echo "   $location\n";
 			continue;
 		}
 	}

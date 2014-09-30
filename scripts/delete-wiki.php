@@ -163,7 +163,8 @@ foreach( $wikis_to_delete as $wiki_name )
 	if( $local_settings === false )
 	{
 		echo "error.\n";
-		echo "Unable read LocalSettings.php file: '$wiki_path/LocalSettings.php'.\n";
+		echo "Unable read LocalSettings.php file.\n";
+		echo "   $wiki_path/LocalSettings.php\n";
 		echo "\n";
 		exit;
 	}

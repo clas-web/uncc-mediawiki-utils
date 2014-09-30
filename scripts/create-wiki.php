@@ -111,7 +111,8 @@ echo "Creating site folder...";
 if( @is_dir($site_path) )
 {
 	echo "error.\n";
-	echo "Site folder already exists: '$site_path'\n";
+	echo "Site folder already exists.\n";
+	echo "   $site_path\n";
 	echo "\n";
 	exit;
 }
@@ -119,7 +120,8 @@ if( @is_dir($site_path) )
 if( !@mkdir($site_path) )
 {
 	echo "error.\n";
-	echo "Unable to create site folder: '$site_path'\n";
+	echo "Unable to create site folder.\n";
+	echo "   $site_path\n";
 	echo "\n";
 	exit;
 }
@@ -137,7 +139,8 @@ $tables_sql = @file_get_contents( "$master_path/maintenance/tables.sql" );
 if( $tables_sql === false )
 {
 	echo "error.\n";
-	echo "Unable to read tables.sql file: '$master_path/maintenance/tables.sql'\n";
+	echo "Unable to read tables.sql file.\n";
+	echo "   $master_path/maintenance/tables.sql\n";
 	echo "\n";
 	exit;
 }
@@ -147,7 +150,8 @@ $tables_sql = str_replace( "/*_*/", $table_prefix, $tables_sql );
 if( @file_put_contents( "$utils_path/temp/$folder_name.sql", $tables_sql ) === false )
 {
 	echo "error.\n";
-	echo "Unable to write tables.sql file: '$utils_path/temp/$wiki_name.sql'\n";
+	echo "Unable to write tables.sql file.\n";
+	echo "   $utils_path/temp/$wiki_name.sql\n";
 	echo "\n";
 	exit;
 }
@@ -177,7 +181,15 @@ echo "done.\n";
 //----------------------------------------------------------------------------------------
 echo "Creating LocalSettings.php...";
 
-$template = file_get_contents( "$utils_path/LocalSettings_template.php" ); 
+$template = file_get_contents( "$utils_path/LocalSettings.template.php" ); 
+if( $template === false )
+{
+	echo "error.\n";
+	echo "Unable to read LocalSetting template file.\n";
+	echo "   $utils_path/LocalSettings.template.php\n";
+	echo "\n";
+	exit;
+}
 
 $template = str_replace( '[FOLDER-NAME]', $wiki_name, $template );
 $template = str_replace( '[SITE-TITLE]', $wiki_title, $template );
