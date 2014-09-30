@@ -173,7 +173,7 @@ foreach( $wikis_to_update as $wiki_name )
 	if( !$skip_sync )
 	{
 		echo "Updating wiki '$wiki_name' source...";
-		exec( "rsync --quiet --delete --recursive --force --exclude=.source.master --exclude=LocalSettings.php --exclude=images --exclude=config '$master_path' '$wiki_path'" );	
+		exec( "rsync --quiet --delete --recursive --force --exclude=.source.master --exclude=LocalSettings.php --exclude=images --exclude=config '$master_path/' '$wiki_path'" );	
 		echo "done.\n";
 	}
 	
