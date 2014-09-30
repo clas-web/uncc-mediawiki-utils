@@ -140,6 +140,7 @@ if( $tables_sql === false )
 }
 
 $tables_sql = str_replace( "/*_*/", $table_prefix, $tables_sql );
+$tables_sql = str_replace( "/*i*/", $table_prefix, $tables_sql );
 
 if( @file_put_contents( "$utils_path/temp/$wiki_name.sql", $tables_sql ) === false )
 {
