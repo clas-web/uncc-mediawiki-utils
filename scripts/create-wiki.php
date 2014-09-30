@@ -219,7 +219,7 @@ echo "done.\n";
 //----------------------------------------------------------------------------------------
 echo "Creating admin account...";
 
-exec( "php $site_path/maintenance/createAndPromote.php --quick --force --bureaucrat --sysop '--conf=$site_path/LocalSettings.php' '$dbName' '$dbPassword'" );
+exec( "php $site_path/maintenance/createAndPromote.php --quick --force --bureaucrat --sysop '--conf=$site_path/LocalSettings.php' '$wikiUsername' '$wikiPassword'" );
 
 echo "done.\n";
 
@@ -228,7 +228,7 @@ echo "done.\n";
 //----------------------------------------------------------------------------------------
 echo "Running update script...";
 
-exec( "php $site_path/maintenance/update.php --quick '--dbuser=$dbName' '--dbpass=$dbPassword' '--conf=$site_path/LocalSettings.php'" );
+exec( "php $site_path/maintenance/update.php --quick '--dbuser=$dbUser' '--dbpass=$dbPassword' '--conf=$site_path/LocalSettings.php'" );
 
 echo "done.\n";
 
