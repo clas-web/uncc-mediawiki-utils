@@ -1,7 +1,6 @@
 <?php
 
-if( php_sapi_name() == 'cli' ) return;
-
+if( getenv("DISABLE_LDAP") !== '1' ):
 
 /** LDAP Authentication **/
 
@@ -30,6 +29,8 @@ $wgLDAPSearchStrings = array( 'UNC Charlotte' => 'USER-NAME@uncc.edu' );
 $wgLDAPPreferences = array( 'UNC Charlotte' => array( 'email' => 'mail') );
 
 $wgAuth = new LdapAuthenticationPlugin();
+
+endif;
 
 
 /** UNC Charlotte skin **/

@@ -151,6 +151,9 @@ if( @file_put_contents( "$utils_path/temp/$wiki_name.sql", $tables_sql ) === fal
 	exit;
 }
 
+exec( "mysql --host='$dbServer' --user='$dbUser' --password='$dbPassword' '$dbName' < '$utils_path/temp/$wiki_name.sql'" );
+
+/*
 $db_connection = @mysqli_connect( $dbServer, $dbUser, $dbPassword, $dbName );
 if( mysqli_connect_errno() )
 {
@@ -160,7 +163,7 @@ if( mysqli_connect_errno() )
 	exit;
 }
 
-if( !@mysqli_multi_query($db_connection, $tables_sql) )
+if( !mysqli_multi_query($db_connection, $tables_sql) )
 {
 	echo "error.\n";
 	echo "Failed to execute tables SQL: " . mysqli_connect_error();
@@ -169,6 +172,7 @@ if( !@mysqli_multi_query($db_connection, $tables_sql) )
 }
 
 mysqli_close( $db_connection );
+*/
 
 echo "done.\n";
 
@@ -216,7 +220,9 @@ echo "done.\n";
 //----------------------------------------------------------------------------------------
 echo "Creating admin account...";
 
+putenv("DISABLE_LDAP=1");
 exec( "php $site_path/maintenance/createAndPromote.php --quick --force --bureaucrat --sysop '--conf=$site_path/LocalSettings.php' '$wikiUsername' '$wikiPassword'" );
+putenv("DISABLE_LDAP=0")
 
 echo "done.\n";
 
