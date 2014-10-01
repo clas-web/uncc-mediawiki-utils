@@ -120,10 +120,7 @@ function remove_directory( $folder, $depth = 0 )
 		if( strrpos($file, '/.') === strlen($file)-2 )  continue;
 		if( strrpos($file, '/..') === strlen($file)-3 ) continue;
 		
-		if( is_dir($file) )
-			remove_directory( $file, $depth+1 );
-		else
-			unlink( $file );
+		if( !is_dir($file) ) @unlink( $file );
 	}
 
 	foreach( glob($folder . '/.*') as $file )
@@ -131,13 +128,27 @@ function remove_directory( $folder, $depth = 0 )
 		if( strrpos($file, '/.') === strlen($file)-2 )  continue;
 		if( strrpos($file, '/..') === strlen($file)-3 ) continue;
 		
-		if( is_dir($file) )
-			remove_directory( $file, $depth+1 );
-		else
-			unlink( $file );
+		if( !is_dir($file) ) @unlink( $file );
+	}
+
+	foreach( glob($folder . '/*') as $file )
+	{
+		if( is_dir($file) ) remove_directory( $file, $depth+1 );
+		else @unlink( $file );
 	}
 	
-	rmdir( $folder );
+	@rmdir( $folder );
+	
+	if( is_dir($folder) )
+	{
+		exec( "rm -rf '$folder'" );
+		if( is_dir($folder) )
+		{
+			return false;
+		}
+	}
+	
+	return true;
 }
 
 
@@ -148,7 +159,7 @@ function delete_with_wildcard( $filename )
 		if( is_dir($file) )
 			remove_directory( $file, true );
 		else
-			unlink( $file );
+			@unlink( $file );
 	}
 }
 
