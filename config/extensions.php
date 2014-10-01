@@ -1,8 +1,18 @@
 <?php
 
-if( getenv("DISABLE_LDAP") !== '1' ):
+
+/** Detect if currently using command line **/
+
+if( php_sapi_name() == 'cli' ):
+
+	$GLOBALS['wgCommandLineMode'] = true;
+
+endif;
+
 
 /** LDAP Authentication **/
+
+if( getenv("DISABLE_LDAP") !== '1' ):
 
 require_once "$IP/extensions/LdapAuthentication/LdapAuthentication.php";
 
