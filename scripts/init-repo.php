@@ -123,7 +123,7 @@ else
 	echo "The master source folder will be recreated.\n";
 }
 echo "\n";
-echo 'Do you want to continue (yes)?';
+echo 'Do you want to continue (yes)? ';
 
 $handle = fopen( "php://stdin","r" );
 $line = fgets($handle);

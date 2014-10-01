@@ -119,7 +119,7 @@ foreach( $wikis_to_delete as $wiki_name )
 	echo "    $wiki_name\n";
 }
 echo "\n";
-echo 'Do you want to continue (yes)?';
+echo 'Do you want to continue (yes)? ';
 
 $handle = fopen( "php://stdin","r" );
 $line = fgets($handle);

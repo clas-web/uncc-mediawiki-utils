@@ -149,7 +149,7 @@ if( $skip_script )
 	echo "The maintenance update script will NOT be run.\n";
 
 echo "\n";
-echo 'Do you want to continue (yes)?';
+echo 'Do you want to continue (yes)? ';
 
 $handle = fopen( "php://stdin","r" );
 $line = fgets($handle);

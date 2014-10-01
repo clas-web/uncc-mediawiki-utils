@@ -86,7 +86,7 @@ $table_prefix = strtolower(generate_random_string(5)).'_';
 //----------------------------------------------------------------------------------------
 echo "Installing '$wiki_title' into folder '$site_path'.\n";
 echo "\n";
-echo 'Do you want to continue (yes)?';
+echo 'Do you want to continue (yes)? ';
 
 $handle = fopen( "php://stdin","r" );
 $line = fgets($handle);
