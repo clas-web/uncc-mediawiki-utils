@@ -174,6 +174,10 @@ foreach( $repos_to_init as $repo_name )
 	
 	// clone repository then delete git files and folders.
 	exec( "git clone --quiet --depth 1 $git '$folder'" );
+	if( $branch !== 'master' )
+	{
+		exec( "cd $folder; git checkout $branch; cd $utils_path/scripts" );
+	}
 	delete_with_wildcard( "$folder/.git*" );
 
 	echo "done\n";
