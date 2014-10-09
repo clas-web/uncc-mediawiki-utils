@@ -182,7 +182,26 @@ foreach( $wikis_to_delete as $wiki_name )
 		exit;
 	}
 	
-	// delete tables...
+    $db_connection = @mysqli_connect( $dbServer, $dbUser, $dbPassword, $dbName );
+	if( mysqli_connect_errno() )
+	{
+		echo "error.\n";
+		echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		echo "\n";
+		exit;
+	}
+
+	$sql = "SELECT CONCAT( \"DROP TABLE \", GROUP_CONCAT(TABLE_NAME) ) AS stmt ".
+		"FROM information_schema.TABLES ".
+		"WHERE TABLE_SCHEMA = 'wikiuncc_mediawiki' AND TABLE_NAME LIKE '$prefix%'";
+
+	if( !mysqli_query($db_connection, $sql) )
+	{
+		echo "error.\n";
+		echo "Failed to execute delete tables SQL: " . mysqli_connect_error();
+		echo "\n";
+		exit;
+	}
 
 	mysqli_close( $db_connection );
 		
