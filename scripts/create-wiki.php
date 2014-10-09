@@ -140,7 +140,6 @@ if( $tables_sql === false )
 }
 
 $tables_sql = str_replace( "/*_*/", $table_prefix, $tables_sql );
-$tables_sql = str_replace( "/*i*/", $table_prefix, $tables_sql );
 
 if( @file_put_contents( "$utils_path/temp/$wiki_name.sql", $tables_sql ) === false )
 {
@@ -151,28 +150,7 @@ if( @file_put_contents( "$utils_path/temp/$wiki_name.sql", $tables_sql ) === fal
 	exit;
 }
 
-exec( "mysql --host='$dbServer' --user='$dbUser' --password='$dbPassword' '$dbName' < '$utils_path/temp/$wiki_name.sql'" );
-
-/*
-$db_connection = @mysqli_connect( $dbServer, $dbUser, $dbPassword, $dbName );
-if( mysqli_connect_errno() )
-{
-	echo "error.\n";
-	echo "Failed to connect to MySQL: " . mysqli_connect_error();
-	echo "\n";
-	exit;
-}
-
-if( !mysqli_multi_query($db_connection, $tables_sql) )
-{
-	echo "error.\n";
-	echo "Failed to execute tables SQL: " . mysqli_connect_error();
-	echo "\n";
-	exit;
-}
-
-mysqli_close( $db_connection );
-*/
+exec( "mysql --verbose --host='$dbServer' --user='$dbUser' --password='$dbPassword' '$dbName' < '$utils_path/temp/$wiki_name.sql'" );
 
 echo "done.\n";
 
@@ -226,6 +204,7 @@ putenv("DISABLE_LDAP=0");
 
 echo "done.\n";
 
+
 //----------------------------------------------------------------------------------------
 // Run maintenance update script.
 //----------------------------------------------------------------------------------------
@@ -234,5 +213,7 @@ echo "Running update script...";
 exec( "php $site_path/maintenance/update.php --quick '--dbuser=$dbUser' '--dbpass=$dbPassword' '--conf=$site_path/LocalSettings.php'" );
 
 echo "done.\n";
+
+echo "\n";
 
 
