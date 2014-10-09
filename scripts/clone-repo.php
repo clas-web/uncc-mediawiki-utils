@@ -6,8 +6,8 @@ echo "\n";
  */
 function display_help()
 {
-	echo "php init-repo.php --all\n";
-	echo "php init-repo.php --repo:REPO [--repo:REPO]\n";
+	echo "php clone-repo.php --all\n";
+	echo "php clone-repo.php --repo:REPO [--repo:REPO]\n";
 	echo "\n";
 	echo " --all\n";
 	echo "      Initialize all repos.\n";
@@ -153,6 +153,7 @@ foreach( $repos_to_init as $repo_name )
 	$folder = $repos_path.'/'.$folder;
 	
 	// delete repository's old folder.
+	exec( "rm -rf $folder" );
 	remove_directory( $folder );
 	if( is_dir($folder) )
 	{
@@ -163,20 +164,12 @@ foreach( $repos_to_init as $repo_name )
 		exit;
 	}
 	
-	if( !@mkdir($folder) )
-	{
-		echo "error.\n";
-		echo "Unable to create repo folder.\n";
-		echo "   $folder\n";
-		echo "\n";
-		exit;
-	}
-	
 	// clone repository then delete git files and folders.
-	exec( "git clone --quiet --depth 1 $git '$folder'" );
+	exec( "git clone --quiet $git '$folder'" );
 	if( $branch !== 'master' )
 	{
-		exec( "cd $folder; git checkout $branch; cd $utils_path/scripts" );
+		//exec( "cd $folder; git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'; git fetch; git checkout $branch;" );
+		exec( "cd $folder; git checkout --quiet $branch;" );
 	}
 	delete_with_wildcard( "$folder/.git*" );
 
@@ -252,5 +245,6 @@ foreach( $all_repos as $repo_name )
 
 
 touch( $master_path.'/.source.master' );
+echo "\n";
 
 
