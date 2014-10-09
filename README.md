@@ -31,6 +31,7 @@ __Clone all repositories__
 __Clone an individual repository__
 
 `php clone-repo.php --repo:[name]`
+
 `php clone-repo.php --repo:mediawiki`
 
 
@@ -39,6 +40,7 @@ __Clone an individual repository__
 _Ensure that the repositories are up-to-date._
 
 `php create-wiki.php --name:[name] --title:'[title]'`
+
 `php create-wiki.php --name:clas --title:'Clas Wiki'` 
 
 ### Update Wiki(s)
@@ -52,6 +54,7 @@ __Update all wikis__
 __Update an individual wiki__
 
 `php update-wiki.php --wiki:[name]`
+
 `php update-wiki.php --wiki:clas`
 
 ### Delete Wiki
@@ -59,6 +62,7 @@ __Update an individual wiki__
 _Ensure that the repositories are up-to-date._
 
 `php delete-wiki.php --wiki:[name]`
+
 `php delete-wiki.php --wiki:clas`
 
 
