@@ -26,22 +26,31 @@ TODO
 
 __Clone all repositories__
 
-`php clone-repo.php --all`
+```
+php clone-repo.php --all
+```
 
 __Clone an individual repository__
 
-`php clone-repo.php --repo:[name]`
-
-`php clone-repo.php --repo:mediawiki`
+```
+php clone-repo.php --repo:[name]
+```
+```
+php clone-repo.php --repo:mediawiki
+```
 
 
 ### Create Wiki
 
 _Ensure that the repositories are up-to-date._
 
-`php create-wiki.php --name:[name] --title:'[title]'`
+```
+php create-wiki.php --name:[name] --title:'[title]'
+```
+```
+php create-wiki.php --name:clas --title:'Clas Wiki'
+```
 
-`php create-wiki.php --name:clas --title:'Clas Wiki'` 
 
 ### Update Wiki(s)
 
@@ -49,21 +58,29 @@ _Ensure that the repositories are up-to-date._
 
 __Update all wikis__
 
-`php update-wiki.php --all`
+```
+php update-wiki.php --all
+```
 
 __Update an individual wiki__
 
-`php update-wiki.php --wiki:[name]`
-
-`php update-wiki.php --wiki:clas`
+```
+php update-wiki.php --wiki:[name]
+```
+```
+php update-wiki.php --wiki:clas
+```
 
 ### Delete Wiki
 
 _Ensure that the repositories are up-to-date._
 
-`php delete-wiki.php --wiki:[name]`
-
-`php delete-wiki.php --wiki:clas`
+```
+php delete-wiki.php --wiki:[name]
+```
+```
+php delete-wiki.php --wiki:clas
+```
 
 
 
