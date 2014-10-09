@@ -62,5 +62,5 @@ $wgHiddenPrefs[] = 'skin';
 // $wgDebugDumpSql  = true;
 // $wgShowDBErrorBacktrace = true;
 // $wgShowDebug = true;
-// $wgDebugLogFile = __DIR__."/logs/debug-$wgSiteKey.log";
+// $wgDebugLogFile = dirname(__DIR__)."/logs/debug-$wgSiteKey.log";
 
