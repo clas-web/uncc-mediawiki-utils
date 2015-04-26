@@ -172,6 +172,7 @@ foreach( $repos_to_init as $repo_name )
 		exec( "cd $folder; git checkout --quiet $branch;" );
 	}
 	delete_with_wildcard( "$folder/.git*" );
+	delete_with_wildcard( "$folder/.gitignore" );
 
 	echo "done\n";
 }

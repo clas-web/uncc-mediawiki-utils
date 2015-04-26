@@ -147,8 +147,9 @@ if( $skip_sync )
 	echo "The wiki source code will NOT be updated.\n";
 if( $skip_script )
 	echo "The maintenance update script will NOT be run.\n";
+if( $skip_sync || $skip_script )
+	echo "\n";
 
-echo "\n";
 echo 'Do you want to continue (yes)? ';
 
 $handle = fopen( "php://stdin","r" );
@@ -166,12 +167,14 @@ echo "\n";
 //----------------------------------------------------------------------------------------
 // Sync each wiki's source code and run the maintenance update script.
 //----------------------------------------------------------------------------------------
-foreach( $wikis_to_update as $wiki_name => $wiki_path )
+foreach( $wikis_to_update as $wiki_name )
 {
+	$wiki_path = $all_wikis[$wiki_name];
+	
 	if( !$skip_sync )
 	{
 		echo "Updating wiki '$wiki_name' source...";
-		exec( "rsync --quiet --delete --recursive --force --exclude=.source.master --exclude=LocalSettings.php --exclude=images --exclude=config '$master_path/' '$wiki_path'" );	
+		exec( "rsync --quiet --delete --recursive --force --exclude=.source.master --exclude=LocalSettings.php --exclude=./images --exclude=./config '$master_path/' '$wiki_path'" );	
 		echo "done.\n";
 	}
 	
@@ -183,4 +186,5 @@ foreach( $wikis_to_update as $wiki_name => $wiki_path )
 	}
 }
 
+echo "\n";
 
